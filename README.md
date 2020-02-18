@@ -2,7 +2,7 @@
 Tool to calculate digest auth
 
 ## Running
-open index.html in browser
+Access via https://jasonl888.github.io/digest_auth_calculator/
 
 type in the inputs and click "Submit"
 

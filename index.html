@@ -42,15 +42,15 @@
             </input>
         </tr>
         <tr>
-            <td>nounce:</td>
+            <td>nonce:</td>
             <td>
-                <input id="nounce">
+                <input id="nonce">
             </td>
             </input>
         </tr>
-        <td>cnounce:</td>
+        <td>cnonce:</td>
         <td>
-            <input id="cnounce">
+            <input id="cnonce">
         </td>
         </input>
         </tr>
@@ -74,7 +74,6 @@
 
     <div id="h1"></div>
     <div id="h2"></div>
-    <div id="final_str"></div>
     <div id="response"></div>
 
     <script>
@@ -148,8 +147,8 @@
             var realm = (document.getElementById("realm").value);
             var method = (document.getElementById("method").value);
             var uri = (document.getElementById("uri").value);
-            var nounce = (document.getElementById("nounce").value);
-            var cnounce = (document.getElementById("cnounce").value);
+            var nonce = (document.getElementById("nonce").value);
+            var cnonce = (document.getElementById("cnonce").value);
             var nc = (document.getElementById("nc").value);
             var qop = (document.getElementById("qop").value);
 
@@ -161,7 +160,7 @@
             //}
             var h1 = MD5(username + ":" + realm + ":" + password)
             var h2 = MD5(method + ":" + uri)
-            var response = MD5(h1 + ":" + nounce + ":" + nc + ":" + cnounce + ":" + qop + ":" + h2)
+            var response = MD5(h1 + ":" + nonce + ":" + nc + ":" + cnonce + ":" + qop + ":" + h2)
 
             document.getElementById("h1").innerHTML = "H1:" + h1;
             document.getElementById("h2").innerHTML = "H2:" + h2;
