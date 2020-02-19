@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -14,88 +13,89 @@
 </head>
 
 <body>
-
-    <h2>Digest Auth Generator</h2>
-    <div id="tool1">
-        <table>
-            <tr>
-                <td>password:</td>
-                <td>
-                    <input id="password" value="Circle Of Life"/>
-                </td>
-            </tr>
-            <tr>
-                <td>username:</td>
-                <td>
-                    <input id="username" value="Mufasa"/>
-                </td>
-            </tr>
-            <tr>
-                <td>realm:</td>
-                <td>
-                    <input id="realm" value="testrealm@host.com"/>
-                </td>
-            </tr>
-            <tr>
-                <td>method:</td>
-                <td>
-                    <input id="method" value="GET"/>
-                </td>
-            </tr>
-            <tr>
-                <td>uri:</td>
-                <td>
-                    <input id="uri" value="/dir/index.html"/>
-                </td>
-            </tr>
-            <tr>
-                <td>nonce:</td>
-                <td>
-                    <input id="nonce" value="dcd98b7102dd2f0e8b11d0f600bfb0c093"/>
-                </td>
-            </tr>
-            <td>cnonce:</td>
-            <td>
-                <input id="cnonce" value="0a4f113b"/>
-            </td>
-            </tr>
-            <tr>
-                <td>nc:</td>
-                <td>
-                    <input id="nc" value="00000001"/>
-                </td>
-            </tr>
-            <tr>
-                <td>qop:</td>
-                <td>
-                    <input id="qop" value="auth"/>
-                </td>
-            </tr>
-        </table>
-
-        <button type="button" onclick="calc_digest_tool1()">Calculate Digest</button>
-
-        <div id="response_tool1"></div>
-    </div>
-
-    <div id="tool2">
-        password:<input id="password_tool2" value="Circle Of Life"/>
-        <textarea rows="15" cols="70" id="message">
-          GET /dir/index.html HTTP/1.0
-          Host: localhost
-          Authorization: Digest username="Mufasa",
-                               realm="testrealm@host.com",
-                               nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
-                               uri="/dir/index.html",
-                               qop=auth,
-                               nc=00000001,
-                               cnonce="0a4f113b",
-                               response="6629fae49393a05397450978507c4ef1",
-                               opaque="5ccc069c403ebaf9f0171e9517f40e41"
-        </textarea>
-
-        <button type="button" onclick="calc_digest_tool2()">Calculate Digest</button>
-        <div id="response_tool2"></div>
+    <div class="container">
+        <h2>Digest Auth Generator</h2>
+          <div class="border rounded m-3">
+              <div id="tool1" class="form-group m-3">
+                  <div class="row m-3">
+                    <div class="col-3">password:</div>
+                    <div class="col-9"><input id="password" class="form-control" value="Circle Of Life"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">username:</div>
+                    <div class="col-9"><input id="username" class="form-control" value="Mufasa"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">realm:</div>
+                    <div class="col-9"><input id="realm" class="form-control" value="testrealm@host.com"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">method:</div>
+                    <div class="col-9"><input id="method" class="form-control" value="GET"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">uri:</div>
+                    <div class="col-9"><input id="uri" class="form-control" value="/dir/index.html"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">nonce:</div>
+                    <div class="col-9"><input id="nonce" class="form-control" value="dcd98b7102dd2f0e8b11d0f600bfb0c093"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">cnonce:</div>
+                    <div class="col-9"><input id="cnonce" class="form-control" value="0a4f113b"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">nc:</div>
+                    <div class="col-9"><input id="nc" class="form-control" value="00000001"/></div>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col-3">qop:</div>
+                    <div class="col-9"><input id="qop" class="form-control" value="auth"/></div>
+                  </div>
+                  <div class="row m-3">
+                      <div class="col">
+                        <button type="button" class="btn-lg btn-block btn-primary" onclick="calc_digest_tool1()">Calculate Digest</button>
+                      </div>
+                  </div>
+                  <div class="row m-3">
+                      <div class="col-3">Digest Response:</div>
+                      <div id="response_tool1" class="col-9"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="border rounded m-3">
+              <div id="tool2" class="form-group m-3">
+                  <div class="row m-3">
+                      <div class="col-3">password:</div>
+                      <div class="col-9"><input id="password_tool2" class="form-control" value="Circle Of Life"/></div>
+                  </div>
+                  <div class="row m-3">
+                        <textarea class="col" rows="13" id="message">
+GET /dir/index.html HTTP/1.0
+Host: localhost
+Authorization: Digest username="Mufasa",
+realm="testrealm@host.com",
+nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
+uri="/dir/index.html",
+qop=auth,
+nc=00000001,
+cnonce="0a4f113b",
+response="6629fae49393a05397450978507c4ef1",
+opaque="5ccc069c403ebaf9f0171e9517f40e41"
+                        </textarea>
+                  </div>
+                  <div class="row m-3">
+                    <div class="col">
+                      <button type="button" class="btn-lg btn-block btn-primary" onclick="calc_digest_tool2()">Calculate Digest</button>
+                    </div>
+                  </div>
+                  <div class="row m-3">
+                      <div class="col-3">Digest Response:</div>
+                      <div id="response_tool2" class="col-9"></div>
+                  </div>
+              </div>
+          </div>
     </div>
 
     <script>
@@ -181,8 +181,7 @@
             var nc = (document.getElementById("nc").value);
             var qop = (document.getElementById("qop").value);
 
-            document.getElementById("response_tool1").innerHTML = "Digest Response:" +
-                digest_algo(username,realm,password,method,uri,nonce,cnonce,nc,qop);
+            document.getElementById("response_tool1").innerHTML = digest_algo(username,realm,password,method,uri,nonce,cnonce,nc,qop);
         }
 
         function calc_digest_tool2() {
@@ -238,8 +237,7 @@
                 qop =  map.qop;
             }
 
-            document.getElementById("response_tool2").innerHTML = "Digest Response:" +
-                digest_algo(username,realm,password,method,uri,nonce,cnonce,nc,qop);
+            document.getElementById("response_tool2").innerHTML = digest_algo(username,realm,password,method,uri,nonce,cnonce,nc,qop);
 
         }
     </script>
