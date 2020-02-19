@@ -9,71 +9,60 @@
         <tr>
             <td>username:</td>
             <td>
-                <input id="username">
+                <input id="username" value="Mufasa"/>
             </td>
-            </input>
         </tr>
         <tr>
             <td>password:</td>
             <td>
-                <input id="password">
+                <input id="password" value="Circle Of Life"/>
             </td>
-            </input>
         </tr>
         <tr>
             <td>realm:</td>
             <td>
-                <input id="realm">
+                <input id="realm" value="testrealm@host.com"/>
             </td>
-            </input>
         </tr>
         <tr>
             <td>method:</td>
             <td>
-                <input id="method">
+                <input id="method" value="GET"/>
             </td>
-            </input>
         </tr>
         <tr>
             <td>uri:</td>
             <td>
-                <input id="uri">
+                <input id="uri" value="/dir/index.html"/>
             </td>
-            </input>
         </tr>
         <tr>
             <td>nonce:</td>
             <td>
-                <input id="nonce">
+                <input id="nonce" value="dcd98b7102dd2f0e8b11d0f600bfb0c093"/>
             </td>
-            </input>
         </tr>
         <td>cnonce:</td>
         <td>
-            <input id="cnonce">
+            <input id="cnonce" value="0a4f113b"/>
         </td>
-        </input>
         </tr>
         <tr>
             <td>nc:</td>
             <td>
-                <input id="nc">
+                <input id="nc" value="00000001"/>
             </td>
-            </input>
         </tr>
         <tr>
             <td>qop:</td>
             <td>
-                <input id="qop">
+                <input id="qop" value="auth"/>
             </td>
-            </input>
         </tr>
     </table>
 
     <button type="button" onclick="calc_digest()">Calculate Digest</button>
 
-    <div id="h1"></div>
-    <div id="h2"></div>
     <div id="response"></div>
 
     <script>
@@ -139,6 +128,15 @@
             return d << _ | d >>> 32 - _
         }
 
+        function digest_algo(username,realm,password,method,uri,nonce,cnonce,nc,qop) {
+            var h1 = MD5(username + ":" + realm + ":" + password)
+            var h2 = MD5(method + ":" + uri)
+            console.log('H1:%s',h1);
+            console.log('H2:%s',h2);
+            var response = MD5(h1 + ":" + nonce + ":" + nc + ":" + cnonce + ":" + qop + ":" + h2)
+            return(response);
+        }
+
         function calc_digest() {
 
             // Get the value of the input field with id="numb"
@@ -158,13 +156,16 @@
             //} else {
             //  text = "Input OK";
             //}
-            var h1 = MD5(username + ":" + realm + ":" + password)
-            var h2 = MD5(method + ":" + uri)
+
+            var h1 = MD5(username + ":" + realm + ":" + password);
+            console.log(username + ":" + realm + ":" + password);
+            console.log('H1:%s',h1);
+            var h2 = MD5(method + ":" + uri);
+            console.log('H2:%s',h2);
             var response = MD5(h1 + ":" + nonce + ":" + nc + ":" + cnonce + ":" + qop + ":" + h2)
 
-            document.getElementById("h1").innerHTML = "H1:" + h1;
-            document.getElementById("h2").innerHTML = "H2:" + h2;
-            document.getElementById("response").innerHTML = "Digest Response:" + response;
+            document.getElementById("response").innerHTML = "Digest Response:" +
+                digest_algo(username,realm,password,method,uri,nonce,cnonce,nc,qop);
         }
     </script>
 
